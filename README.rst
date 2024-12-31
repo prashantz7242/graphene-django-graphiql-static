@@ -25,23 +25,46 @@ Add it to your `INSTALLED_APPS`:
         'graphene_django_graphiql_static',
     )
 
-Add graphene-django-graphiql-static's URL patterns:
+Add `graphene-django-graphiql-static`'s URL Patterns
+====================================================
+
+When using `graphene-django-graphiql-static`, you should import the `GraphiQLOfflineView` provided by this package instead of the regular `GraphQLView` from `graphene-django`.  
+
+**Do Not Import** `GraphQLView` from `graphene_django.views`:
 
 .. code-block:: python
 
+    # Incorrect import
+    from graphene_django.views import GraphQLView
+
+Instead, use the `GraphiQLOfflineView` provided by `graphene-django-graphiql-static` to enable offline-compatible GraphiQL:
+
+.. code-block:: python
+
+    # Correct import
     from graphene_django_graphiql_static.views import GraphiQLOfflineView
 
+Below is an example of how to define your `urlpatterns` using `GraphiQLOfflineView`:
+
+.. code-block:: python
+
+    from django.urls import path
+    from django.views.decorators.csrf import csrf_exempt
+    from graphene_django_graphiql_static.views import GraphiQLOfflineView
 
     urlpatterns = [
         # Other installed apps
         path(
-        "graphql/",
-        csrf_exempt(
-            GraphiQLOfflineView.as_view(schema=gq_schema, graphiql=settings.DEBUG)
+            "graphql/",
+            csrf_exempt(
+                GraphiQLOfflineView.as_view(schema=gq_schema, graphiql=settings.DEBUG)
+            ),
+            name="graphql",
         ),
-        name="gaphql",
-    ),
     ]
+
+This ensures that your project uses the offline-compatible GraphiQL UI provided by `graphene-django-graphiql-static` and serves all necessary assets locally.
+
 
 Features
 --------

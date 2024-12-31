@@ -37,14 +37,14 @@ When using `graphene-django-graphiql-static`, you should import the `GraphiQLOff
     # Incorrect import
     from graphene_django.views import GraphQLView
 
-Instead, use the `GraphiQLOfflineView` provided by `graphene-django-graphiql-static` to enable offline-compatible GraphiQL:
+Instead, use the ``GraphiQLOfflineView`` provided by ``graphene-django-graphiql-static`` to enable offline-compatible GraphiQL:
 
 .. code-block:: python
 
     # Correct import
     from graphene_django_graphiql_static.views import GraphiQLOfflineView
 
-Below is an example of how to define your `urlpatterns` using `GraphiQLOfflineView`:
+Below is an example of how to define your ``urlpatterns`` using ``GraphiQLOfflineView``:
 
 .. code-block:: python
 
@@ -63,7 +63,7 @@ Below is an example of how to define your `urlpatterns` using `GraphiQLOfflineVi
         ),
     ]
 
-This ensures that your project uses the offline-compatible GraphiQL UI provided by `graphene-django-graphiql-static` and serves all necessary assets locally.
+This ensures that your project uses the offline-compatible GraphiQL UI provided by ``graphene-django-graphiql-static`` and serves all necessary assets locally.
 
 
 Features

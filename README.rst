@@ -25,12 +25,12 @@ Add it to your `INSTALLED_APPS`:
         'graphene_django_graphiql_static',
     )
 
-Add `graphene-django-graphiql-static`'s URL Patterns
+Add ``graphene-django-graphiql-static``'s URL Patterns
 ====================================================
 
-When using `graphene-django-graphiql-static`, you should import the `GraphiQLOfflineView` provided by this package instead of the regular `GraphQLView` from `graphene-django`.  
+When using `graphene-django-graphiql-static`, you should import the ``GraphiQLOfflineView`` provided by this package instead of the regular `GraphQLView` from `graphene-django`.  
 
-**Do Not Import** `GraphQLView` from `graphene_django.views`:
+**Do Not Import** ``GraphQLView`` from ``graphene_django.views``:
 
 .. code-block:: python
 

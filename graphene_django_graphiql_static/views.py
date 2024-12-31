@@ -2,7 +2,7 @@ from graphene_django.views import GraphQLView
 
 
 class GraphiQLOfflineView(GraphQLView):
-    graphiql_template = "graphiql/graphiql_mod.html"
+    graphiql_template = "graphene_django_graphiql_static/graphiql_mod.html"
     whatwg_fetch_sri = "sha256-+pQdxwAcHJdQ3e/9S4RK6g8ZkwdMgFQuHvLuN5uyk5c="
 
     # React and ReactDOM.

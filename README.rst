@@ -7,7 +7,7 @@ Graphene-Django-GraphiQL-Static provides an offline-compatible GraphiQL web UI f
 Documentation
 -------------
 
-The full documentation is at https://graphene-django-graphiql-static.readthedocs.io.
+The full documentation is at https://github.com/prashantz7242/graphene-django-graphiql-static#readme.
 
 Quickstart
 ----------
@@ -22,43 +22,62 @@ Add it to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         # Other installed apps
-        'graphene_django_graphiql_static.apps.GrapheneDjangoGraphiqlStaticConfig',
+        'graphene_django_graphiql_static',
     )
 
 Add graphene-django-graphiql-static's URL patterns:
 
 .. code-block:: python
 
-    from graphene_django_graphiql_static import urls as graphene_django_graphiql_static_urls
+    from graphene_django_graphiql_static.views import GraphiQLOfflineView
 
 
     urlpatterns = [
         # Other installed apps
-        url(r'^', include(graphene_django_graphiql_static_urls)),
+        path(
+        "graphql/",
+        csrf_exempt(
+            GraphiQLOfflineView.as_view(schema=gq_schema, graphiql=settings.DEBUG)
+        ),
+        name="gaphql",
+    ),
     ]
 
 Features
 --------
 
-* TODO
+1. **Offline-Compatible GraphiQL UI**  
+   Provides a fully functional GraphiQL web interface for exploring GraphQL queries and mutations, even when the internet connection is unavailable.
 
-Running Tests
--------------
+2. **Static Asset Hosting**  
+   Serves all required assets (CSS, JavaScript) locally through Django's static files system, ensuring reliability and performance.
 
-Does the code actually work?
+3. **Easy Integration with Graphene-Django**  
+   Designed to seamlessly integrate with Graphene-Django projects, requiring minimal configuration.
 
-::
+4. **Improved Developer Experience**  
+   Offers a consistent and uninterrupted development workflow for working with GraphQL APIs, independent of external asset CDNs.
 
-    source <YOURVIRTUALENV>/bin/activate
-    (myenv) $ pip install tox
-    (myenv) $ tox
+5. **Customizable and Extendable**  
+   Fully customizable to adapt to project-specific requirements while maintaining compatibility with Django’s template and static systems.
+
+.. Running Tests
+.. -------------
+
+.. Does the code actually work?
+
+.. ::
+
+..     source <YOURVIRTUALENV>/bin/activate
+..     (myenv) $ pip install tox
+..     (myenv) $ tox
 
 
-Development commands
----------------------
+.. Development commands
+.. ---------------------
 
-::
+.. ::
 
-    pip install -r requirements_dev.txt
-    invoke -l
+..     pip install -r requirements_dev.txt
+..     invoke -l
 

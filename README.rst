@@ -26,7 +26,7 @@ Add it to your `INSTALLED_APPS`:
     )
 
 Add ``graphene-django-graphiql-static``'s URL Patterns
-====================================================
+======================================================
 
 When using `graphene-django-graphiql-static`, you should import the ``GraphiQLOfflineView`` provided by this package instead of the regular `GraphQLView` from `graphene-django`.  
 
